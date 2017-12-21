@@ -20,5 +20,6 @@ def porter_stem(tokens):
     return [ps.stem(token) for token in tokens]
 
 def process_input(arg):
+    nltk.download()
     tokens = porter_stem(categorize(remove_stop_words(tokenize(arg)), ['JJ', 'RB', 'RBR', 'RBS', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ', 'JJR', 'JJS', 'VB', 'NN', 'NNP','NNPS']))
     return list(set(tokens))
