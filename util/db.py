@@ -14,7 +14,6 @@ def get_documents(db, collection):
     return collection.find()
 
 def load_result(returned_quote, number, input_text):
-    print("Loading " + returned_quote + " sent to " + number)
     collection = get_collection("quotelee", "results")
     currTime = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
     collection.insert({
