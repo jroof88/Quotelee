@@ -1,5 +1,6 @@
 import sys
 from util.fetch_quote import fetch_quote
+from util.db import get_mongo_conn
 from flask import Flask, request, redirect
 from util.db import load_result
 from twilio.twiml.messaging_response import MessagingResponse

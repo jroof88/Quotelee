@@ -1,9 +1,14 @@
+import os
 import time
 import datetime
 from pymongo import MongoClient
 
 def get_mongo_conn():
-    return MongoClient("mongodb://jawnroof:88orange88@ds131826.mlab.com:31826/quotelee")
+    user = os.environ['MLAB_USER']
+    password = os.environ['MLAB_PASSWORD']
+    mlab_url = os.environ['MLAB_URL']
+    return MongoClient("mongodb://"+user+":"+password+"@"+mlab_url+"/quotelee")
+    #return MongoClient("mongodb://jawnroof:88orange88@ds131826.mlab.com:31826/quotelee")
 
 def get_collection(db, collection):
     client = get_mongo_conn()
