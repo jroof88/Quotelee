@@ -19,10 +19,10 @@ def get_documents(db, collection):
 
 def load_result(returned_quote, number, input_text):
     collection = get_collection("quotelee", "results")
-    currTime = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
+    currDateTime = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
     collection.insert({
         "input": input_text,
         "quote": returned_quote,
         "number": number,
-        "datetime": currTime
+        "datetime": currDateTime
     })

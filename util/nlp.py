@@ -1,5 +1,3 @@
-import os
-import sys
 import nltk
 from nltk.tokenize import word_tokenize, PunktSentenceTokenizer
 from nltk.corpus import stopwords

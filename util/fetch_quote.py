@@ -1,4 +1,3 @@
-import os
 from random import *
 from nlp import process_input
 from knn import find_nearest_neighbor

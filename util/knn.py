@@ -1,6 +1,3 @@
-import os
-import sys
-import json
 from random import *
 from db import get_collection, get_documents
 
@@ -32,7 +29,8 @@ def find_nearest_neighbor(arg):
         
     if max_score == 0:
         return False    
-                      
+    
+    #If multiple quotes with max_score take random                  
     if len(output) > 0:
         output = get_random(output)
     else:
