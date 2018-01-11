@@ -3,7 +3,7 @@ from util.daily_quote import send_daily_quote
 
 schedule = BackgroundScheduler(timezone="Pacific Standard Time")
 
-@schedule.scheduled_job('cron', day_of_week='mon-fri', hour=21, minute=25)
+@schedule.scheduled_job('cron', day_of_week='mon-fri', hour=21, minute=35)
 def scheduled_job():
     send_daily_quote()
 
