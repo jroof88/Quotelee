@@ -15,7 +15,7 @@ for d in data:
     if d['quoteAuthor'] == "":
         full_quote = d['quoteText'] + " - Unknown"
     else:
-        full_quote = (d['quoteText'] + " - " + d['quoteAuthor']).replace(".", "")
+        full_quote = (d['quoteText'] + " - " + d['quoteAuthor'])
     quote['quote'] = full_quote
     quote['tags'] = process_input(full_quote)
     quotes.append(quote)
