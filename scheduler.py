@@ -7,10 +7,5 @@ sched = BlockingScheduler()
 def scheduled_job():
     print("Sending Out Daily Quote")
     send_daily_quote()
-    
-@sched.scheduled_job('interval', minutes=2)
-def scheduled_job2():
-    print("Sending Out Daily Quote")
-    send_daily_quote()
 
 sched.start()
