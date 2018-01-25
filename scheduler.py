@@ -1,4 +1,4 @@
-from apscheduler.schedulers.blocking import BackgroundScheduler
+from apscheduler.schedulers.background import BackgroundScheduler
 from util.daily_quote import send_daily_quote
 
 sched = BackgroundScheduler()
