@@ -3,9 +3,8 @@ from util.daily_quote import send_daily_quote
 
 sched = BlockingScheduler()
 
-@sched.scheduled_job('cron', hour=15, minute=15, timezone='US/Pacific')
+@sched.scheduled_job('cron', hour=9, timezone='US/Pacific')
 def send_daily_quote_job():
-    print("Sending Out Daily Quote from Cron PST")
     send_daily_quote()
     
 sched.start()
