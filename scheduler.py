@@ -1,16 +1,10 @@
-from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers import Scheduler
 from util.daily_quote import send_daily_quote
 
-sched = BackgroundScheduler()
+sched = Scheduler()
+sched.start()
 
-@sched.scheduled_job('cron', day_of_week='mon-sun', hour=19, minute=41)
+@sched.cron_schedule('cron', hour=11, minute=37)
 def scheduled_job():
     print("Sending Out Daily Quote")
     send_daily_quote()
-
-@sched.scheduled_job('cron', day_of_week='mon-sun', hour=19, minute=43)
-def scheduled_job2():
-    print("Sending Out Daily Quote")
-    send_daily_quote()
-
-sched.start()
