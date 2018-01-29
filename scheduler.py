@@ -1,9 +1,9 @@
-from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.blocking import BlockingScheduler
 from util.daily_quote import send_daily_quote
 
-sched = BackgroundScheduler()
+sched = BlockingScheduler()
 
-@sched.scheduled_job('cron', hour=12, minute=40, timezone='US/Pacific')
+@sched.scheduled_job('cron', hour=12, minute=50, timezone='US/Pacific')
 def send_daily_quote_job():
     print("Sending Out Daily Quote from Cron PST")
     send_daily_quote()
