@@ -1,7 +1,7 @@
-from apscheduler.scheduler import Scheduler
+from apscheduler.scheduler import BlockingScheduler
 from util.daily_quote import send_daily_quote
 
-sched = Scheduler()
+sched = BlockingScheduler()
 sched.start()
 
 @sched.cron_schedule('cron', hour=11, minute=40)
