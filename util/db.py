@@ -1,7 +1,7 @@
 import os
 import time
 import datetime
-import pytz
+from pytz import timezone
 from pymongo import MongoClient
 
 def get_mongo_conn():
