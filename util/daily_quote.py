@@ -1,6 +1,7 @@
 import os
 import time
-import datetime
+from datetime import datetime
+from pytz import timezone
 from twilio.rest import Client
 from util.db import get_collection, get_documents
 
@@ -17,7 +18,7 @@ def send_daily_quote():
         if(user["status"] == "active"):
             client.messages.create(to=user["phoneNo"], from_=twilio_phone_number, body=quote)
     
-    currDateTime = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
+    currDateTime = datetime.now(timezone('US/Pacific')).strftime('%m-%d-%Y %H:%M')
     numberOfUsers = users.count()
     daily_quotes = get_collection("quotelee", "daily_quotes")
     daily_quotes.insert({
