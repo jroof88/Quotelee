@@ -1,6 +1,7 @@
 import os
 import time
 import datetime
+import pytz
 from pymongo import MongoClient
 
 def get_mongo_conn():
@@ -19,7 +20,8 @@ def get_documents(db, collection):
 
 def load_result(returned_quote, number, input_text):
     collection = get_collection("quotelee", "results")
-    currDateTime = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
+    #currDateTime = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
+    currDateTime = strftime('%m-%d-%Y %H:%M')
     collection.insert({
         "input": input_text,
         "quote": returned_quote,
