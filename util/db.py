@@ -23,7 +23,8 @@ def load_result(returned_quote, number, input_text):
     currDateTime = datetime.now(timezone('US/Pacific')).strftime('%m-%d-%Y %H:%M')
     collection.insert({
         "input": input_text,
-        "quote": returned_quote,
+        "quote": returned_quote['quote'],
+        "author": returned_quote['author'],
         "number": number,
         "datetime": currDateTime
     })
