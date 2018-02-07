@@ -20,4 +20,6 @@ def error_message():
     adjectives = ["life", "sadness", "consciousness", "world"]
     rand1 = randint(0, len(people)-1)
     rand2 = randint(0, len(adjectives)-1)
-    return "My apologies, I could not find a good match to your search query. Please check spelling or try stuff like \"" + people[rand1] + "\" or \"" + adjectives[rand2] + "\""
+    quote['quote'] = "My apologies, I could not find a good match to your search query. Please check spelling or try stuff like \"" + people[rand1] + "\" or \"" + adjectives[rand2] + "\""
+    quote['author'] = 'No Match'
+    return quote
