@@ -14,7 +14,7 @@ def send_daily_quote():
     quote = get_random_quote()
     full_quote = quote['quote'] + " - " + quote['author']
     
-    users = get_documents("quotelee", "test_user")
+    users = get_documents("quotelee", "users")
     for user in users:
         if(user["status"] == "active"):
             client.messages.create(to=user["phoneNo"], from_=twilio_phone_number, body=full_quote)

@@ -19,6 +19,7 @@ def get_documents(db, collection):
     return collection.find()
 
 def load_result(returned_quote, number, input_text):
+    print(returned_quote)
     collection = get_collection("quotelee", "results")
     currDateTime = datetime.now(timezone('US/Pacific')).strftime('%m-%d-%Y %H:%M')
     collection.insert({
