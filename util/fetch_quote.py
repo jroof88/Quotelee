@@ -21,4 +21,4 @@ def error_message():
     error_quote = {}
     error_quote['quote'] = "My apologies, I could not find a good match to your search query. Please check spelling or try stuff like \"" + people[rand1] + "\" or \"" + adjectives[rand2] + "\""
     error_quote['author'] = "No Match"
-    return quote
+    return error_quote
