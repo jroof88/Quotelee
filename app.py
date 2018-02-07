@@ -24,9 +24,9 @@ def sms_reply():
         resubscribe_user(incoming_number)
         return ''
     else:
-        result_quote = fetch_quote(incoming_message)
+        result_quote_object = fetch_quote(incoming_message)
         load_result(result_quote, incoming_number, incoming_message)
-        resp.message(result_quote)
+        resp.message(result_quote_object['quote'] + " - " + result_quote_object['author'])
         return str(resp)
 
 if __name__ == "__main__":
