@@ -3,6 +3,8 @@ from nlp import process_input
 from knn import find_nearest_neighbor
 from db import get_collection, get_documents
 
+#https://still-mountain-68428.herokuapp.com/sms_reply
+
 def fetch_quote(input_query):
     tags = process_input(input_query)
     result_id =  find_nearest_neighbor(tags)

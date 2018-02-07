@@ -18,8 +18,8 @@ for d in data:
         author = d['quoteAuthor']
     quote['quote'] = d['quoteText']
     quote['author'] = author
-    quote['tags'] = process_input(d['quoteText']) + author.lower().split(" ")
-    print(d['quoteText'])
+    quote['tags'] = process_input(d['quoteText']) + process_input(author)
+    print(quote['tags'])
     quotes.append(quote)
     quote = {}
     counter+=1

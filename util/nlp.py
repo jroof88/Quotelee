@@ -18,5 +18,5 @@ def porter_stem(tokens):
     return [ps.stem(token) for token in tokens]
 
 def process_input(arg):
-    tokens = porter_stem(categorize(remove_stop_words(tokenize(arg)), ['JJ', 'RB', 'RBR', 'RBS', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ', 'JJR', 'JJS', 'VB', 'NN', 'NNP','NNPS']))
+    tokens = porter_stem(categorize(remove_stop_words(tokenize(arg)), ['JJ', 'MD', 'RB', 'RBR', 'RBS', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ', 'JJR', 'JJS', 'VB', 'NN', 'NNP','NNPS', 'IN']))
     return list(set(tokens))
