@@ -26,7 +26,10 @@ def sms_reply():
     else:
         result_quote_object = fetch_quote(incoming_message)
         load_result(result_quote_object, incoming_number, incoming_message)
-        resp.message(result_quote_object['quote'] + " - " + result_quote_object['author'])
+        if(result_quote_object['author'] == "No Match"):
+            resp.message(result_quote_object['quote'])
+        else:
+            resp.message(result_quote_object['quote'] + " - " + result_quote_object['author'])
         return str(resp)
 
 if __name__ == "__main__":
