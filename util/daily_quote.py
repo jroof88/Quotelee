@@ -3,7 +3,7 @@ import time
 from datetime import datetime
 from pytz import timezone
 from twilio.rest import Client
-from util.db import get_collection, get_documents
+from db import get_collection, get_documents
 
 account_sid = os.environ["TWILIO_ACCOUNT_SID"]
 authorization_token = os.environ["TWILIO_AUTH_TOKEN"]
@@ -12,17 +12,19 @@ client = Client(account_sid, authorization_token)
 
 def send_daily_quote():
     quote = get_random_quote()
+    full_quote = quote['quote'] + " - " + quote['author']
     
     users = get_documents("quotelee", "users")
     for user in users:
         if(user["status"] == "active"):
-            client.messages.create(to=user["phoneNo"], from_=twilio_phone_number, body=quote)
+            client.messages.create(to=user["phoneNo"], from_=twilio_phone_number, body=full_quote)
     
     currDateTime = datetime.now(timezone('US/Pacific')).strftime('%m-%d-%Y %H:%M')
     numberOfUsers = users.count()
     daily_quotes = get_collection("quotelee", "daily_quotes")
     daily_quotes.insert({
-        "quote": quote,
+        "quote": quote['quote'],
+        "author": quote['author'],
         "datetime": currDateTime,
         "numberOfUsers": numberOfUsers
     })
@@ -34,7 +36,7 @@ def get_random_quote():
     )
     
     for quote in random_quote:
-        return quote["quote"]
+        return quote
     
 def check_subscription(phoneNumber):
     user_collection = get_collection("quotelee", "users")
@@ -76,8 +78,4 @@ def resubscribe_user(phoneNumber):
 def send_resubscribe_message(phoneNumber):
     mesg = "Welcome back! Enjoy your daily quote and remember you can text me a topic or historial figure for a quote!"
     client.messages.create(to=phoneNumber, from_=twilio_phone_number, body=mesg)
-
-    
-    
-
-    
+        

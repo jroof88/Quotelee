@@ -13,11 +13,13 @@ counter = 0
 
 for d in data:
     if d['quoteAuthor'] == "":
-        full_quote = d['quoteText'] + " - Unknown"
+        author = "Unknown"
     else:
-        full_quote = (d['quoteText'] + " - " + d['quoteAuthor'])
-    quote['quote'] = full_quote
-    quote['tags'] = process_input(full_quote)
+        author = d['quoteAuthor']
+    quote['quote'] = d['quoteText']
+    quote['author'] = author
+    quote['tags'] = process_input(d['quoteText']) + author.lower().split(" ")
+    print(d['quoteText'])
     quotes.append(quote)
     quote = {}
     counter+=1

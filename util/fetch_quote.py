@@ -11,7 +11,7 @@ def fetch_quote(input_query):
     else:
         quote_collection = get_collection("quotelee", "quotes")
         quote_object = quote_collection.find_one({'_id': result_id})
-        quote = quote_object['quote']
+        quote = quote_object['quote'] + " - " + quote_object['author']
         return quote
     
 def error_message():
