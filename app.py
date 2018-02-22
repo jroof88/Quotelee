@@ -1,10 +1,12 @@
 import sys
+import json
 from util.fetch_quote import fetch_quote
 from util.db import get_mongo_conn
-from flask import Flask, request, redirect
+from flask import Flask, request, redirect, render_template
 from util.db import load_result
 from util.daily_quote import check_subscription, unsubscribe_user, resubscribe_user 
 from twilio.twiml.messaging_response import MessagingResponse
+from util.dashboard import get_data
 
 app = Flask(__name__)
 
@@ -17,10 +19,13 @@ def sms_reply():
     
     check_subscription(incoming_number)
     
-    if incoming_message.upper() == "STOP":
+    blacklist_words = ["STOP", "STOPALL", "UNSUBSCRIBE", "CANCEL", "END", "QUIT"]
+    start_words = ["START", "YES"]
+     
+    if incoming_message.upper() in blacklist_words:
         unsubscribe_user(incoming_number)
         return ''
-    elif incoming_message.upper() == "START":
+    elif incoming_message.upper() in start_words:
         resubscribe_user(incoming_number)
         return ''
     else:
