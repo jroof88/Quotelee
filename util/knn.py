@@ -13,7 +13,6 @@ def get_random(quotes):
     return quotes[random] 
 
 def find_nearest_neighbor(arg):
-    print(arg)
     max_score = 0
     curr_score = 0
     output = []

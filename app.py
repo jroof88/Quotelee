@@ -1,12 +1,8 @@
-import sys
-import json
-from util.fetch_quote import fetch_quote
-from util.db import get_mongo_conn
 from flask import Flask, request, redirect, render_template
-from util.db import load_result
+from util.db import load_result, get_mongo_conn
+from util.fetch_quote import fetch_quote
 from util.daily_quote import check_subscription, unsubscribe_user, resubscribe_user 
 from twilio.twiml.messaging_response import MessagingResponse
-from util.dashboard import get_data
 
 app = Flask(__name__)
 
