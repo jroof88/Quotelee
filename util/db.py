@@ -8,7 +8,7 @@ def get_mongo_conn():
     user = os.environ['MLAB_USER']
     password = os.environ['MLAB_PASSWORD']
     mlab_url = os.environ['MLAB_URL']
-    return MongoClient("mongodb://"+user+":"+password+"@"+mlab_url+"/quotelee")
+    return MongoClient("mongodb://"+user+":"+password+"@"+mlab_url)
 
 def get_collection(db, collection):
     client = get_mongo_conn()
